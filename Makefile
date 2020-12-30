@@ -2,6 +2,9 @@ NAME=sky130_fd_sc_hd__nand2_1
 
 all: sim
 
+show_cells:
+	klayout -l $(PDK_ROOT)/sky130A/libs.tech/klayout/sky130A.lyp $(PDK_ROOT)/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds
+
 magic:
 	# for rcfile to work PDKPATH must be set correctly
 	magic -rcfile sky130A.magicrc $(NAME).mag
