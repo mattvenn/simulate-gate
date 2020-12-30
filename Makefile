@@ -1,4 +1,4 @@
-NAME=sky130_fd_sc_hd__nand2_1
+NAME=CELL_NAME
 
 all: sim
 
