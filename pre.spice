@@ -3,6 +3,11 @@ Standard cell Simulation
 .lib "./sky130_fd_pr/models/sky130.lib.spice" tt
 
 * instantiate the cell
-Xcell CELL_PORTS CELL_NAME
+X1_1 A    VGND VGND VPWR VPWR Y1_1 sky130_fd_sc_hd__inv_1
 
+X2_1 A    VGND VGND VPWR VPWR Y2_1 sky130_fd_sc_hd__inv_1
+X2_8 Y2_1 VGND VGND VPWR VPWR Y2_8 sky130_fd_sc_hd__inv_8
+
+C1 Y1_1 VGND 1.0pF
+C2 Y2_8 VGND 1.0pF
 
