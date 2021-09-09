@@ -1,96 +1,29 @@
 Standard cell Simulation
-* this file edited to remove everything not in tt lib
+* this file edited to remove everything not in tt lib, makes it a lot faster
 .lib "./sky130_fd_pr/models/sky130.lib.spice" tt
+* including this file means I can use the cell names without copying them in this file
+.include "/home/matt/work/asic-workshop/shuttle2-mpw-two-c/pdk/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice"
 
-* instantiate the cell
+* 1 inverter
 X1_1 A_1  VGND VGND VPWR VPWR Y1_1 sky130_fd_sc_hd__inv_1
+C1 Y1_1  VGND 0.1pF
 
+* 2 inverters
 X2_1 A_2  VGND VGND VPWR VPWR Y2_1 sky130_fd_sc_hd__inv_1
 X2_8 Y2_1 VGND VGND VPWR VPWR Y2_8 sky130_fd_sc_hd__inv_8
+C2 Y2_8  VGND 0.1pF
 
+* 3 inverters
 X3_1  A_3  VGND VGND VPWR VPWR Y3_1 sky130_fd_sc_hd__inv_1
 X3_4  Y3_1 VGND VGND VPWR VPWR Y3_4 sky130_fd_sc_hd__inv_4
 X3_16 Y3_4 VGND VGND VPWR VPWR Y3_16 sky130_fd_sc_hd__inv_16
-
-C1 Y1_1  VGND 0.1pF
-C2 Y2_8  VGND 0.1pF
 C3 Y3_16 VGND 0.1pF
-
-.subckt sky130_fd_sc_hd__inv_1 A VGND VNB VPB VPWR Y
-X0 VGND A Y VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X1 VPWR A Y VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-.ends
-
-.subckt sky130_fd_sc_hd__inv_4 A VGND VNB VPB VPWR Y
-X0 Y A VGND VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X1 VGND A Y VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X2 VPWR A Y VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X3 Y A VGND VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X4 VGND A Y VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X5 VPWR A Y VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X6 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X7 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-.ends
-
-.subckt sky130_fd_sc_hd__inv_8 A VGND VNB VPB VPWR Y
-X0 VGND A Y VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X1 VPWR A Y VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X2 Y A VGND VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X3 Y A VGND VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X4 VPWR A Y VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X5 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X6 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X7 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X8 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X9 VPWR A Y VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X10 VGND A Y VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X11 Y A VGND VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X12 Y A VGND VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X13 VGND A Y VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X14 VGND A Y VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X15 VPWR A Y VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-.ends
-
-.subckt sky130_fd_sc_hd__inv_16 A VGND VNB VPB VPWR Y
-X0 VGND A Y VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X1 VGND A Y VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X2 VPWR A Y VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X3 VPWR A Y VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X4 Y A VGND VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X5 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X6 VGND A Y VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X7 VPWR A Y VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X8 VGND A Y VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X9 VPWR A Y VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X10 Y A VGND VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X11 VPWR A Y VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X12 VPWR A Y VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X13 Y A VGND VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X14 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X15 Y A VGND VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X16 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X17 VGND A Y VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X18 VGND A Y VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X19 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X20 Y A VGND VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X21 Y A VGND VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X22 Y A VGND VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X23 VPWR A Y VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X24 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X25 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X26 Y A VGND VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X27 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X28 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-X29 VGND A Y VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X30 VGND A Y VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
-X31 VPWR A Y VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
-.ends
 
 * set gnd and power
 Vgnd VGND 0 0
 Vdd VPWR VGND 1.8
 
-* create a pulse for A 
+* create the drive pulse for all 3 chains
 Va A_1 VGND pulse(0 1.8 1n 10p 10p 1n 2n)
 Vb A_2 VGND pulse(0 1.8 1n 10p 10p 1n 2n)
 Vc A_3 VGND pulse(0 1.8 1n 10p 10p 1n 2n)
