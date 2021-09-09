@@ -14,10 +14,6 @@ magic:
 	# ext2spice cthresh 0
 	# ext2spice
 
-simulation.spice: pre.spice sky130_fd_sc_hd__inv_1.spice sky130_fd_sc_hd__inv_8.spice post.spice
-	# build a simulation with pre and post.spice
-	cat $^ > $@
-
 sim: simulation.spice
 	# run the simulation
 	ngspice $^
