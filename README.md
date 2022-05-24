@@ -17,5 +17,5 @@ This repo is part of the [Zero to ASIC course](https://zerotoasiccourse.com) and
 # Resources
 
 * ngspice tutorial http://ngspice.sourceforge.net/ngspice-tutorial.html
-* ngspice notes on sky130 simulation: http://ngspice.sourceforge.net/applic.html
+* ngspice notes on sky130 simulation: http://ngspice.sourceforge.net/applic.html and the use of .spiceinit
 * Skywater PDK docs: https://skywater-pdk.readthedocs.io/en/main/
