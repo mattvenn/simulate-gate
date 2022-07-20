@@ -3,11 +3,11 @@ NAME=sky130_fd_sc_hd__nand2_1
 all: sim
 
 show_cells:
-	klayout -l $(PDK_ROOT)/sky130A/libs.tech/klayout/sky130A.lyp $(PDK_ROOT)/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds
+	klayout -l $(PDK_ROOT)/$(PDK)/libs.tech/klayout/$(PDK).lyp $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds
 
 magic:
 	# for rcfile to work PDK_ROOT must be set correctly
-	magic -rcfile $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc $(NAME).mag
+	magic -rcfile $(PDK_ROOT)/$(PDK)/libs.tech/magic/$(PDK).magicrc $(NAME).mag
 	# now in the command window type:
 	# extract
 	# ext2spice lvs
