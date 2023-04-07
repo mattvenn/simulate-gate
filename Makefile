@@ -3,7 +3,7 @@ NAME=CELL_NAME
 all: sim
 
 show_cells:
-	klayout -l $(PDK_ROOT)/sky130A/libs.tech/klayout/sky130A.lyp $(PDK_ROOT)/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds
+	summary.py --show-sky130
 
 magic:
 	# for rcfile to work PDK_ROOT must be set correctly
