@@ -3,6 +3,8 @@ name: Run simulate-gate check
 on:
   push:
   workflow_dispatch:
+  schedule:
+    - cron: '0 8 1 * *'
 
 jobs:
   simulate:
