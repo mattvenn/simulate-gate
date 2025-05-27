@@ -8,6 +8,12 @@ jobs:
   simulate:
     runs-on: ubuntu-latest
     steps:
+      - name: Get runner UID and GID
+        id: id
+        run: |
+          echo "UID=$(id -u)" >> $GITHUB_OUTPUT
+          echo "GID=$(id -g)" >> $GITHUB_OUTPUT
+
       - name: Checkout your repository
         uses: actions/checkout@v4
 
@@ -15,8 +21,12 @@ jobs:
         run: git clone --branch nand-ci https://github.com/mattvenn/simulate-gate.git
 
       - name: Run make check inside Docker with bashrc sourced
+        env:
+          UID: ${{ steps.id.outputs.UID }}
+          GID: ${{ steps.id.outputs.GID }}
         run: |
           docker run --rm \
+            --user $UID:$GID \
             --entrypoint bash \
             -v ${{ github.workspace }}/simulate-gate:/work \
             -w /work \
