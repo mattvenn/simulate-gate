@@ -1,0 +1,32 @@
+name: Run simulate-gate check
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  simulate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository
+        uses: actions/checkout@v4
+
+      - name: Pull Docker image
+        run: docker pull hpretl/iic-osic-tools
+
+      - name: Clone simulate-gate repo
+        run: git clone --branch nand-ci https://github.com/mattvenn/simulate-gate.git
+
+      - name: Run make check inside Docker
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}:/work \
+            -w /work/simulate-gate \
+            hpretl/iic-osic-tools \
+            make check
+
+      - name: Upload nand.png as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nand-image
+          path: simulate-gate/nand.png
