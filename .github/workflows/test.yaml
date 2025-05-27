@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Clone simulate-gate repo
-        run: git clone --branch nand https://github.com/mattvenn/simulate-gate.git
+        run: git clone --branch nand-ci https://github.com/mattvenn/simulate-gate.git
 
       - name: Run make check inside Docker with bashrc sourced
         run: |
