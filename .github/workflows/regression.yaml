@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: mattvenn/z2a-course-regressions/run-in-docker@main
+      - uses: mattvenn/z2a-course-regressions@main
         with:
           repo: mattvenn/simulate-gate
           ref: nand-ci
