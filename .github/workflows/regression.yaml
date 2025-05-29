@@ -16,5 +16,5 @@ jobs:
           repo: mattvenn/simulate-gate
           ref: nand-ci
           command: make check
-          artifact_file: simulate-gate/nand.svg
+          artifact_file: nand.svg
 
