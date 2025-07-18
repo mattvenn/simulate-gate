@@ -1,12 +1,14 @@
 Standard cell Simulation
 * this file edited to remove everything not in tt lib
-.lib "./sky130_fd_pr/models/sky130.lib.spice" tt
+.lib "/foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice" tt
 
 * include the standard cells
-.include "./sky130_fd_sc_hd.spice"
+*.include "./sky130_fd_sc_hd.spice"
+.include /foss/pdks/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
 
 * instantiate the cell - adjust this to match your standard cell
 Xcell A B VGND VGND VPWR VPWR Y sky130_fd_sc_hd__nand2_1
+Xnot  Y VGND VGND VPWR VPWR NOTY sky130_fd_sc_hd__inv_1
 
 * set gnd and power
 Vgnd VGND 0 0
